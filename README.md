@@ -1,1 +1,1 @@
-# CompBioMiniProject Some words
+# CompBioMiniProject
