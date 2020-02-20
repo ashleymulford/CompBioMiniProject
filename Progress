@@ -6,7 +6,9 @@
    build index with kallisto using fasta file
    kallisto index -i hcmv_index.idx HCMV_reads.fasta
 
-#3
+#3 Quantify the TPM of each CDS using kallisto (do for each SRR)
+   kallisto quant -i hcmv_index.idx -o quant_results_SRR5660030 -b 30 -t 4 SRR5660030.1_1.fastq SRR5660030.1_2.fastq
+   Generates input for sleuth (R) - find differentially expressed genes between the two timepoints (2pi and 6dpi)
 
 #4
 
