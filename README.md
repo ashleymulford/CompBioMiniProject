@@ -1,1 +1,3 @@
 # CompBioMiniProject
+
+Python pipeline 
