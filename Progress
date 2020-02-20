@@ -1,7 +1,7 @@
 #1 Download data: click on links in pdfs, will take you to NCBI, scroll down then click on the ID under Run, 
    will take you SRA page, click data access, copy link 2 and download run with wget - do for all four
    
-#2 Python code to make input - fasta file
+#2 Python code to make input - fasta file Scriot: 02_generate.R
       output fasta file and log file
    build index with kallisto using fasta file
    kallisto index -i hcmv_index.idx HCMV_reads.fasta
