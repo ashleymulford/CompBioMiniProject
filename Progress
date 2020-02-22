@@ -10,9 +10,24 @@
    kallisto quant -i hcmv_index.idx -o quant_results_SRR5660030 -b 30 -t 4 SRR5660030.1_1.fastq SRR5660030.1_2.fastq
    Generates input for sleuth (R) - find differentially expressed genes between the two timepoints (2pi and 6dpi)
 
-#4
+#4 Create an index with Bowtie2:
+   bowtie2-build HCMV_reads.fasta HCMV
+      outputs 6 files
+   Map to the index (all four SRRs): ##need to filter out reads that don't map!!
+   bowtie2 --quiet -x --no-unal HCMV -1 SRR_seq_data/SRR5660030.1_1.fastq -2 SRR_seq_data/SRR5660030.1_2.fastq -SHCMV_SRR30map.sam
+      outputs 4 .sam files
+   Add to log file:
+   printf "Donor 1 (2dpi) had " >> miniProject.log
+   wc -l SRR5660044.1_1.fastq *2 will get total number of initial reads
+   " read pairs before Bowtie2 filtering and " >> miniProject.log
+   grep --count ^SRR5660030 HCMV_SRR30map.sam #lines that start with SRR#
+   " read pairs after.\n" >> miniProject.log
 
-#5
+#5 Convert .sam files to fastq files for SPAdes input (for all 4 SRRs):
+   samtools fastq HCMV_SRR30map.sam > spades_input_HCMV_SRR30.fastq
+   Run SPAdes and write command used to log file:
+   
+   printf "spades command" >> miniProject.log
 
 #6
 
