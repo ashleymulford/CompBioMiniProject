@@ -18,5 +18,8 @@ Clone this repository to your working directory:
     
 Netx, move into this directory:
      
-     cd CompBioMiniProject/
+    cd CompBioMiniProject/
      
+Run wrapper script:
+
+    python3 wrapper.py 
