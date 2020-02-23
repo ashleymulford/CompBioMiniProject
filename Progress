@@ -14,7 +14,7 @@
    Sleuth with R script 03
 
 #4 Create an index with Bowtie2:
-   bowtie2-build HCMV_reads.fasta HCMV
+   bowtie2-build EF999921_reads.fasta HCMV
       outputs 6 files
    Map to the index (all four SRRs): ##need to filter out reads that don't map!!
    bowtie2 --quiet -x --no-unal HCMV -1 SRR_seq_data/SRR5660030.1_1.fastq -2 SRR_seq_data/SRR5660030.1_2.fastq -SHCMV_SRR30map.sam
