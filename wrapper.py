@@ -60,24 +60,24 @@ def 05b_spades(SRR_list):
   log_file.write(run_spades)
   log_file.close()
   
-  
+#function to conunt and subset contigs longer than 1000 bp  
 def 06_subset_contigs():
-  subset = "python3 06_count_contigs.py"
+  subset = "python3 06_count_contigs.py" #see script for details
   os.system(subset)
   
-  
+#function to calculate assembly length  
 def 07_assembly_length():
-  calc_length = "python3 07_assembly_length.py"
+  calc_length = "python3 07_assembly_length.py" #see script for details
   os.system(calc_length)
   
-  
+#function to assemble contigs together, separated by 50 Ns  
 def 08_concatenate_contigs():
-   concat = "python3 08_concat_contigs.py"
+   concat = "python3 08_concat_contigs.py" #see script for details
    os.system(concat)
   
-  
+#function to run blast  
 def 09_blast():
-  blast = "python3 09_blast.py"
+  blast = "python3 09_blast.py" #see script for details
   os.system(blast)
 
 
@@ -85,16 +85,15 @@ def 09_blast():
 
 SRR_list = ["SRR5660030", "SRR5660033", "SRR5660044", "SRR5660045"]
 
+
 02a_EF99921_fasta()
 02b_kallisto()
 03a_kallisto(SRR_list)
 03b_sleuth()
 04a_bowtie2(SRR_list)
 04b_and_05a_convert_to_fastq_and_count(SRR_list)
-
 os.system(mkdir spades)
-
-05b_spades()
+05b_spades(SRR_list)
 06_subset_contigs()
 07_assembly_length()
 08_concatenate_contigs()
