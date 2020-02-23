@@ -22,34 +22,41 @@ def 02b_kallisto():
   run_index = "kallisto index -i hcmv_index.idx HCMV_reads.fasta"
   os.system(run_index)
 
-#function to quantify 
+#function to quantify paired-end reads with kallisto
 def 03a_kallisto(SRR_list):
   for srr in SRR_list:
     quantify = "kallisto quant -i hcmv_index.idx -o quant_results_" + srr + " -b 30 -t 4 " + srr + ".1_1.fastq " + srr + ".1_2.fastq
     os.system(quantify)
   
-  
+#function to run sleuth
 def 03b_sleuth():
-  run_sleuth = "Rscript 03_diff_gene_expression.R"
+  run_sleuth = "Rscript 03_diff_gene_expression.R" #see script for details on running sleuth
   os.system(run_sleuth)
   
-  
+#function to run bowtie2  
 def 04_bowtie2(SRR_list):
+  #build bowtie2 index from EF999921 fasta file
   run_bowtie2_build = "bowtie2-build EF999921_reads.fasta HCMV""
   os.system(run_bowtie2_build)
-  log_file = open("/home/amulford/mini_project/miniProject.log", "w") #write to file
   for srr in SRR_list:
     run_bowtie2 = "bowtie2 --no-unal --quiet -x HCMV -1 SRR_seq_data/"+ srr +".1_1.fastq -2 SRR_seq_data/" + srr + ".1_2.fastq -S " + srr + "map.sam"
     os.system(run_bowtie2)
 
-    
-def 05_spades(SRR_list):
+#function to convert sam files to fastq files for SPAdes input, also counts reads before and after filtering with bowtie2
+def 04b_and_05a_convert_to_fastq_and_count(SRR_list):
+  log_file = open("miniProject.log", "w") #write to file
+  #convert sam files to fastq files using samtools
   for srr in SRR_list:
     convert_to_fastq = "samtools fastq /home/amulford/mini_project/" + srr + "map.sam > /home/amulford/mini_project/" + srr + "map.fastq"
     os.system(convert_to_fastq)
+  
+    
+    
+    
+def 05b_spades(SRR_list):
   run_spades = "spades -k 55,77,99,127 -t 2 --only-assembler -s " + SRR_list[0] + "map.fastq -s " + SRR_list[1] + "map.fastq -s " + SRR_list[2] + "map.fastq -s " + SRR_list[3] + "map.fastq -o /home/amulford/mini_project/"
   os.system(run_spades)
-  log_file = open("/home/amulford/mini_project/miniProject.log", "w") #write to file
+  log_file = open("miniProject.log", "w") #write to file
   log_file.write("spades -k 55,77,99,127 -t 2 --only-assembler -s SRR5660030map.fastq -s SRR5660033map.fastq -s SRR5660044map.fastq -s SRR5660045map.fastq -o /home/amulford/mini_project/\n")
   log_file.close()
   
@@ -76,7 +83,6 @@ def 09_blast():
 
 
 SRR_list = ["SRR5660030", "SRR5660033", "SRR5660044", "SRR5660045"]
-
 
 
 
