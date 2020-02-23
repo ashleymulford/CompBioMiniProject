@@ -5,16 +5,24 @@ from Bio import SeqIO
 from Bio.Blast import NCBIWWW
 from Bio.Blast import NCBIXML
 
+#function to convert sra files to fastq paired-end reads
+def 01_fastq_dump(SRR_list):
+  for srr in SRR_list:
+    dump = "fastq-dump -I --split-files "
+    os.system(dump)
 
-def 02a_HCMV_fasta():
-  make_fasta = "python3 02_generate_input_HCMV.py"
+#function to make fasta file from CDS of NCBI Accession EF999921
+def 02a_EF99921_fasta():
+  make_fasta = "python3 02_generate_input_HCMV.py" #see script for details on generation of fasta file
+  #this call runs command line:
   os.system(make_fasta)
 
+#function to make index with kallisto
 def 02b_kallisto():
   run_index = "kallisto index -i hcmv_index.idx HCMV_reads.fasta"
   os.system(run_index)
 
-  
+#function to quantify 
 def 03a_kallisto(SRR_list):
   for srr in SRR_list:
     quantify = "kallisto quant -i hcmv_index.idx -o quant_results_" + srr + " -b 30 -t 4 " + srr + ".1_1.fastq " + srr + ".1_2.fastq
@@ -47,23 +55,23 @@ def 05_spades(SRR_list):
   
   
 def 06_subset_contigs():
-  subset = "python3 /home/amulford/mini_project/scripts/06_count_contigs.py"
+  subset = "python3 06_count_contigs.py"
   os.system(subset)
   
   
 def 07_assembly_length():
-  calc_length = "python3 /home/amulford/mini_project/scripts/07_assembly_length.py"
+  calc_length = "python3 07_assembly_length.py"
   os.system(calc_length)
   
   
 def 08_concatenate_contigs():
-   concat = "python3 /home/amulford/mini_project/scripts/08_concat_contigs.py"
+   concat = "python3 08_concat_contigs.py"
    os.system(concat)
   
   
 def 09_blast():
-
-
+  blast = "python3 09_blast.py"
+  os.system(blast)
 
 
 
