@@ -34,7 +34,7 @@ def 03b_sleuth():
   os.system(run_sleuth)
   
 #function to run bowtie2  
-def 04_bowtie2(SRR_list):
+def 04a_bowtie2(SRR_list):
   #build bowtie2 index from EF999921 fasta file
   run_bowtie2_build = "bowtie2-build EF999921_reads.fasta HCMV""
   os.system(run_bowtie2_build)
@@ -49,15 +49,15 @@ def 04b_and_05a_convert_to_fastq_and_count(SRR_list):
   for srr in SRR_list:
     convert_to_fastq = "samtools fastq /home/amulford/mini_project/" + srr + "map.sam > /home/amulford/mini_project/" + srr + "map.fastq"
     os.system(convert_to_fastq)
-  
+  #ADD COUNTING AND PUT IN LOG FILE
     
     
     
 def 05b_spades(SRR_list):
-  run_spades = "spades -k 55,77,99,127 -t 2 --only-assembler -s " + SRR_list[0] + "map.fastq -s " + SRR_list[1] + "map.fastq -s " + SRR_list[2] + "map.fastq -s " + SRR_list[3] + "map.fastq -o /home/amulford/mini_project/"
+  run_spades = "spades -k 55,77,99,127 -t 2 --only-assembler -s " + SRR_list[0] + "map.fastq -s " + SRR_list[1] + "map.fastq -s " + SRR_list[2] + "map.fastq -s " + SRR_list[3] + "map.fastq -o /spades/"
   os.system(run_spades)
   log_file = open("miniProject.log", "w") #write to file
-  log_file.write("spades -k 55,77,99,127 -t 2 --only-assembler -s SRR5660030map.fastq -s SRR5660033map.fastq -s SRR5660044map.fastq -s SRR5660045map.fastq -o /home/amulford/mini_project/\n")
+  log_file.write(run_spades)
   log_file.close()
   
   
@@ -81,14 +81,24 @@ def 09_blast():
   os.system(blast)
 
 
+  ###############################################################
 
 SRR_list = ["SRR5660030", "SRR5660033", "SRR5660044", "SRR5660045"]
 
+02a_EF99921_fasta()
+02b_kallisto()
+03a_kallisto(SRR_list)
+03b_sleuth()
+04a_bowtie2(SRR_list)
+04b_and_05a_convert_to_fastq_and_count(SRR_list)
 
+os.system(mkdir spades)
 
-
-
-
+05b_spades()
+06_subset_contigs()
+07_assembly_length()
+08_concatenate_contigs()
+09_blast()
 
 
 
