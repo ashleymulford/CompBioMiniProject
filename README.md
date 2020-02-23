@@ -4,17 +4,21 @@ This repo contains a python pipeline that takes sra input reads from the virus f
 
 ## Languages Requirements: 
 - Python3 https://www.python.org/downloads/
+- with libraries:
     - os https://docs.python.org/2/library/os.html
     - Biopython https://biopython.org/wiki/Download
 
 - R https://cran.r-project.org/bin/windows/base/
-    - install.packages(dplyr)
-    - install.packages(sleuth)
+- with libraries:
+    - dplyr, download with: install.packages(dplyr)
+    - sleuth, download with: install.packages(sleuth)
 
 ## Software Requirements: 
-kallisto 
-bowtie2 
-SPAdes
+- fastq dump https://trace.ncbi.nlm.nih.gov/Traces/sra/sra.cgi?view=toolkit_doc&f=fastq-dump
+- kallisto https://pachterlab.github.io/kallisto/download
+- bowtie2 http://bowtie-bio.sourceforge.net/bowtie2/manual.shtml
+- samtools http://samtools.sourceforge.net/
+- SPAdes http://cab.spbu.ru/software/spades/
 
 ## How to run:
 Clone this repository to your working directory:
