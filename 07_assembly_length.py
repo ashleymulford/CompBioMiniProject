@@ -2,8 +2,8 @@
 from Bio.Seq import Seq
 from Bio import SeqIO
 
-file = open("/home/amulford/mini_project/contigs_1000.fasta")
-log_file = open("/home/amulford/mini_project/miniProject.log", "a")
+file = open("contigs_1000.fasta")
+log_file = open("miniProject.log", "a")
 
 total_bps = 0
 
