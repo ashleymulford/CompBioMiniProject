@@ -1,10 +1,12 @@
 #1 Download data: click on links in pdfs, will take you to NCBI, scroll down then click on the ID under Run, 
    will take you SRA page, click data access, copy link 2 and download run with wget - do for all four
+   convert sra files to fastq files with fastq-dump
+   fastq-dump -I --split-files SRR
    
 #2 Python code to make input - fasta file Script: 02_generate.py
       output fasta file and log file
    build index with kallisto using fasta file
-   kallisto index -i hcmv_index.idx HCMV_reads.fasta
+   kallisto index -i hcmv_index.idx EF99921_reads.fasta
 
 #3 Quantify the TPM of each CDS using kallisto (do for each SRR)
    kallisto quant -i hcmv_index.idx -o quant_results_SRR5660030 -b 30 -t 4 SRR5660030.1_1.fastq SRR5660030.1_2.fastq
