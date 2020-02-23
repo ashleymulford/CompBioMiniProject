@@ -2,8 +2,8 @@
 from Bio.Seq import Seq
 from Bio import SeqIO
 
-file = open("/home/amulford/mini_project/contigs_1000.fasta")
-output_file = open("/home/amulford/mini_project/blast_input.fasta", "w")
+file = open("contigs_1000.fasta")
+output_file = open("blast_input.fasta", "w")
   
 assembly = ""
 
