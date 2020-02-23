@@ -26,3 +26,4 @@ for feature in rec.features:
 #update log with CDS count
 file.write("The HCMV genome (EF99921) has " + str(count) + " CDS." + "\n")    
 file.close() #close file
+file2.close()
