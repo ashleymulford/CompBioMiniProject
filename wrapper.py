@@ -8,7 +8,7 @@ from Bio.Blast import NCBIXML
 #function to convert sra files to fastq paired-end reads
 def 01_fastq_dump(SRR_list):
   for srr in SRR_list:
-    dump = "fastq-dump -I --split-files " + srr
+    dump = "fastq-dump -I --split-files " + srr + ".1"
     os.system(dump)
 
 #function to make fasta file from CDS of NCBI Accession EF999921
