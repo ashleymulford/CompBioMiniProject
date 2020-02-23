@@ -21,4 +21,4 @@ sleuth_table <- sleuth_results(s_fit, 'reduced:full', 'lrt', show_all = FALSE)
 sleuth_significant <- dplyr::filter(sleuth_table, qval <= 0.05)
 save_sleuth_significant<-sleuth_significant[1:4]
 
-write.table(save_sleuth_significant, "/home/amulford/miniProject.log", append = TRUE, sep = "\t", col.names = TRUE, quote = FALSE, row.names = FALSE)
+write.table(save_sleuth_significant, "miniProject.log", append = TRUE, sep = "\t", col.names = TRUE, quote = FALSE, row.names = FALSE)
