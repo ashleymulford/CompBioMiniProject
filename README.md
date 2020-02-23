@@ -18,5 +18,5 @@ Clone this repository to your working directory:
     
 Move into this directory:
      
-     cd CompBioMiniProject
+     cd CompBioMiniProject/
      
