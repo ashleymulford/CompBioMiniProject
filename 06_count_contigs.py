@@ -3,11 +3,11 @@ from Bio.Seq import Seq
 from Bio import SeqIO
 
 #open file
-file = open("/home/amulford/mini_project/contigs.fasta")
+file = open("/spades/contigs.fasta")
 
-log_file = open("/home/amulford/mini_project/miniProject.log", "a")
+log_file = open("miniProject.log", "a")
 
-output_file = open("/home/amulford/mini_project/contigs_1000.fasta", "w")
+output_file = open("contigs_1000.fasta", "w")
 
 count = 0
 
