@@ -4,6 +4,7 @@
 SRR_list = ["SRR5660030", "SRR5660033", "SRR5660044", "SRR5660045"]
 
 for srr in SRR_list:
+  #open files with full data set
   file1 = open("/home/amulford/mini_project/SRR_seq_data/" + srr + ".1_1.fastq")
   file2 = open("/home/amulford/mini_project/SRR_seq_data/" + srr + ".1_2.fastq")
   test1 = open("/home/amulford/mini_project/SRR_seq_data/subset_" + srr + ".1_1.fastq", "w")
