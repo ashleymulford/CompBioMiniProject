@@ -16,7 +16,7 @@ Clone this repository to your working directory:
 
     git clone https://github.com/ashleymulford/CompBioMiniProject
     
-Move into this directory:
+Netx, move into this directory:
      
      cd CompBioMiniProject/
      
