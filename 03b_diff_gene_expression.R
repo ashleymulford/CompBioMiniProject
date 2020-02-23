@@ -21,7 +21,7 @@ s_fit <- sleuth_fit(s_fit, ~1, 'reduced')
 #run test
 s_fit <- sleuth_lrt(s_fit, 'reduced', 'full')
 
-#output results
+#get results
 sleuth_table <- sleuth_results(s_fit, 'reduced:full', 'lrt', show_all = FALSE)
 sleuth_significant <- dplyr::filter(sleuth_table, qval <= 0.05) #filter for signifcance
 save_sleuth_significant<-sleuth_significant[1:4] #extract first four columns
