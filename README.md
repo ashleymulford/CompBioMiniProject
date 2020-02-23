@@ -11,3 +11,7 @@ kallisto
 bowtie2 
 SPAdes
 
+## How to run:
+Clone this repository to your working directory:
+git clone https://github.com/ashleymulford/CompBioMiniProject.git
+
