@@ -13,7 +13,7 @@ def 01_fastq_dump(SRR_list):
 
 #function to make fasta file from CDS of NCBI Accession EF999921
 def 02a_EF99921_fasta():
-  make_fasta = "python3 02_generate_input_HCMV.py" #see script for details on generation of fasta file
+  make_fasta = "python3 02a_generate_input_HCMV.py" #see script for details on generation of fasta file
   #this call runs command line:
   os.system(make_fasta)
 
@@ -30,7 +30,7 @@ def 03a_kallisto(SRR_list):
   
 #function to run sleuth
 def 03b_sleuth():
-  run_sleuth = "Rscript 03_diff_gene_expression.R" #see script for details on running sleuth
+  run_sleuth = "Rscript 03b_diff_gene_expression.R" #see script for details on running sleuth
   os.system(run_sleuth)
   
 #function to run bowtie2  
