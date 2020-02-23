@@ -1,9 +1,9 @@
 from Bio.Blast import NCBIWWW
 from Bio.Blast import NCBIXML
 
-input = open("/home/amulford/mini_project/blast_input.fasta").read()
+input = open("blast_input.fasta").read()
 
-log_file = open("/home/amulford/mini_project/miniProject.log", "a")
+log_file = open("miniProject.log", "a")
 
 result_handle = NCBIWWW.qblast("blastn", "nr", input, entrez_query="taxid[10292]")
 
