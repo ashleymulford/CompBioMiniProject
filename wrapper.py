@@ -7,7 +7,7 @@ from Bio.Blast import NCBIXML
 
 
 def 02a_HCMV_fasta():
-  make_fasta = "python3 /home/amulford/mini_project/scripts/02_generate_input_HCMV.py"
+  make_fasta = "python3 02_generate_input_HCMV.py"
   os.system(make_fasta)
 
 def 02b_kallisto():
