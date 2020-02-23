@@ -23,10 +23,10 @@ for alignment in (list(blast_record.alignments)[:10]):
     log_file.write(str(count_hsp)+"\t")
     #get desired info for top hsp
     for hsp in alignment.hsps:
-        log_file.write(hsp.identities + "\t") #get identities
-        log_file.write(hsp.gaps + "\t") #get gaps
-        log_file.write(hsp.bits + "\t") #get bits
-        log_file.write(hsp.expect + "\n") #get expect
+        log_file.write(str(hsp.identities) + "\t") #get identities
+        log_file.write(str(hsp.gaps) + "\t") #get gaps
+        log_file.write(str(hsp.bits) + "\t") #get bits
+        log_file.write(str(hsp.expect) + "\n") #get expect
         break
 
 log_file.close() #close file
