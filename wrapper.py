@@ -47,11 +47,27 @@ def 04b_and_05a_convert_to_fastq_and_count(SRR_list):
   log_file = open("miniProject.log", "w") #write to file
   #convert sam files to fastq files using samtools
   for srr in SRR_list:
-    convert_to_fastq = "samtools fastq /home/amulford/mini_project/" + srr + "map.sam > /home/amulford/mini_project/" + srr + "map.fastq"
+    convert_to_fastq = "samtools fastq " + srr + "map.sam > " + srr + "map.fastq"
     os.system(convert_to_fastq)
-  #ADD COUNTING AND PUT IN LOG FILE
-    
-    
+  for srr in SRR_list:
+    fastq_before = open(srr + ".1_1.fastq")
+    fastq_after = open(srr + "map.fastq")
+    count_before = 0
+    count_after = 0
+    for line in fastq_before:
+      count_before = count_before+1
+    for line in fastq_after:
+      count_after = count_after+1
+    count_before = count_before/2
+    count_after = count_after/4
+    if srr == SRR_list[0]:
+      log_file.write("Donor 1 (2dpi) had " + str(count_before) + " read pairs before Bowtie2 filtering and " + str(count_after) + " read pairs after.")
+    elif srr == SRR_list[1]:
+      log_file.write("Donor 1 (6dpi) had " + str(count_before) + " read pairs before Bowtie2 filtering and " + str(count_after) + " read pairs after.")
+    elif srr == SRR_list[2]:
+      log_file.write("Donor 3 (2dpi) had " + str(count_before) + " read pairs before Bowtie2 filtering and " + str(count_after) + " read pairs after.")
+    elif srr == SRR_list[3]:
+      log_file.write("Donor 3 (6dpi) had " + str(count_before) + " read pairs before Bowtie2 filtering and " + str(count_after) + " read pairs after.")    
     
 def 05b_spades(SRR_list):
   run_spades = "spades -k 55,77,99,127 -t 2 --only-assembler -s " + SRR_list[0] + "map.fastq -s " + SRR_list[1] + "map.fastq -s " + SRR_list[2] + "map.fastq -s " + SRR_list[3] + "map.fastq -o /spades/"
