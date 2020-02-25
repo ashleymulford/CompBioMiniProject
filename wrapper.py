@@ -73,7 +73,7 @@ def 04b_count_reads(SRR_list):
   
 #function to run SPAdes  
 def 05b_spades(SRR_list):
-  run_spades = "spades -k 55,77,99,127 -t 2 --only-assembler -s " + SRR_list[0] + "map.fastq -s " + SRR_list[1] + "map.fastq -s " + SRR_list[2] + "map.fastq -s " + SRR_list[3] + "map.fastq -o /spades/"
+  run_spades = "spades -k 55,77,99,127 -t 2 --only-assembler --pe1-1 " + SRR_list[0] + ".1.fastq --pe1-2 " + SRR_list[0] + ".2.fastq --pe2-1 " + SRR_list[1] + ".1.fastq --pe2-2 " + SRR_list[1] + ".2.fastq --pe3-1 " + SRR_list[2] + ".1.fastq --pe3-2 " + SRR_list[2] + ".2.fastq --pe4-1 " + SRR_list[3] + ".1.fastq --pe4-2 " + SRR_list[3] + ".2.fastq -o /spades" 
   os.system(run_spades)
   log_file = open("miniProject.log", "w")
   log_file.write(run_spades) #write to file
