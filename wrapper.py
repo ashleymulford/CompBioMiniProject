@@ -39,19 +39,17 @@ def 04a_bowtie2(SRR_list):
   run_bowtie2_build = "bowtie2-build EF999921_reads.fasta HCMV""
   os.system(run_bowtie2_build)
   for srr in SRR_list:
-    run_bowtie2 = "bowtie2 --no-unal --un-conc --quiet -x HCMV -1 SRR_seq_data/"+ srr +".1_1.fastq -2 SRR_seq_data/" + srr + ".1_2.fastq -S " + srr + "map.sam"
+    run_bowtie2 = "bowtie2 --no-unal --al-conc" + srr + "--quiet -x HCMV -1 SRR_seq_data/"+ srr +".1_1.fastq -2 SRR_seq_data/" + srr + ".1_2.fastq -S " + srr + "map.sam"
     os.system(run_bowtie2)
 
 #function to convert sam files to fastq files for SPAdes input, also counts reads before and after filtering with bowtie2
-def 04b_and_05a_convert_to_fastq_and_count(SRR_list):
+def 04b_count_reads(SRR_list):
   log_file = open("miniProject.log", "w")
-  #convert sam files to fastq files using samtools
   for srr in SRR_list:
-    convert_to_fastq = "samtools fastq " + srr + "map.sam > " + srr + "map.fastq"
-    os.system(convert_to_fastq)
-  for srr in SRR_list:
+    rename = "mv " + srr + ".1 " + srr + ".1.fastq"
+    os.system(rename) #rename bowtie2 output files to end in fastq
     fastq_before = open(srr + ".1_1.fastq")
-    fastq_after = open(srr + "map.fastq")
+    fastq_after = open(srr + ".1.fastq")
     count_before = 0
     count_after = 0
     for line in fastq_before:
