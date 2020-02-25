@@ -46,8 +46,10 @@ def 04a_bowtie2(SRR_list):
 def 04b_count_reads(SRR_list):
   log_file = open("miniProject.log", "w")
   for srr in SRR_list:
-    rename = "mv " + srr + ".1 " + srr + ".1.fastq"
-    os.system(rename) #rename bowtie2 output files to end in fastq
+    rename1 = "mv " + srr + ".1 " + srr + ".1.fastq"
+    os.system(rename1) #rename bowtie2 output files to end in fastq
+    rename2 = "mv " + srr + ".2 " + srr + ".2.fastq"
+    os.system(rename2) #rename bowtie2 output files to end in fastq
     fastq_before = open(srr + ".1_1.fastq")
     fastq_after = open(srr + ".1.fastq")
     count_before = 0
