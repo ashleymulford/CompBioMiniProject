@@ -39,7 +39,7 @@ def 04a_bowtie2(SRR_list):
   run_bowtie2_build = "bowtie2-build EF999921_reads.fasta HCMV""
   os.system(run_bowtie2_build)
   for srr in SRR_list:
-    run_bowtie2 = "bowtie2 --no-unal --quiet -x HCMV -1 SRR_seq_data/"+ srr +".1_1.fastq -2 SRR_seq_data/" + srr + ".1_2.fastq -S " + srr + "map.sam"
+    run_bowtie2 = "bowtie2 --no-unal --un-conc --quiet -x HCMV -1 SRR_seq_data/"+ srr +".1_1.fastq -2 SRR_seq_data/" + srr + ".1_2.fastq -S " + srr + "map.sam"
     os.system(run_bowtie2)
 
 #function to convert sam files to fastq files for SPAdes input, also counts reads before and after filtering with bowtie2
