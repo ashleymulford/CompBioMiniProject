@@ -17,8 +17,8 @@
    bowtie2-build EF999921_reads.fasta HCMV
       outputs 6 files
    Map to the index (all four SRRs): ##need to filter out reads that don't map!!
-   bowtie2 --quiet -x --no-unal HCMV -1 SRR_seq_data/SRR5660030.1_1.fastq -2 SRR_seq_data/SRR5660030.1_2.fastq -SHCMV_SRR30map.sam
-      outputs 4 .sam files
+   bowtie2 --quiet -x --al-conc --no-unal HCMV -1 SRR_seq_data/SRR5660030.1_1.fastq -2 SRR_seq_data/SRR5660030.1_2.fastq -SHCMV_SRR30map.sam
+      outputs 4 .sam files and maybe also paired end fastq - in which case no need for samtools
    Add to log file:
    printf "Donor 1 (2dpi) had " >> miniProject.log
    wc -l SRR5660044.1_1.fastq *2 will get total number of initial reads
