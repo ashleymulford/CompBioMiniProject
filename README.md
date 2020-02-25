@@ -29,6 +29,6 @@ Netx, move into this directory:
      
     cd CompBioMiniProject/
      
-Run wrapper script:
+Run wrapper script from the CompBioMiniProject directory:
 
     python3 wrapper.py 
