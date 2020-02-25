@@ -1,4 +1,5 @@
 import os
+import argparse
 from Bio import Entrez
 from Bio.Seq import Seq
 from Bio import SeqIO
@@ -101,6 +102,11 @@ def 09_blast():
 
   ###############################################################
 
+  
+parser = argparse.ArgumentParser()
+parser.add_argument("--SRR-list", nargs='+', help = "a list of the SRRs you want to assemble and blast")
+parser.parse_args()
+  
 SRR_list = ["SRR5660030", "SRR5660033", "SRR5660044", "SRR5660045"]
 
 
