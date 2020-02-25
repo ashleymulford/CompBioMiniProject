@@ -44,7 +44,7 @@ def 04a_bowtie2(SRR_list):
 
 #function to convert sam files to fastq files for SPAdes input, also counts reads before and after filtering with bowtie2
 def 04b_and_05a_convert_to_fastq_and_count(SRR_list):
-  log_file = open("miniProject.log", "w") #write to file
+  log_file = open("miniProject.log", "w")
   #convert sam files to fastq files using samtools
   for srr in SRR_list:
     convert_to_fastq = "samtools fastq " + srr + "map.sam > " + srr + "map.fastq"
@@ -68,12 +68,14 @@ def 04b_and_05a_convert_to_fastq_and_count(SRR_list):
       log_file.write("Donor 3 (2dpi) had " + str(count_before) + " read pairs before Bowtie2 filtering and " + str(count_after) + " read pairs after.")
     elif srr == SRR_list[3]:
       log_file.write("Donor 3 (6dpi) had " + str(count_before) + " read pairs before Bowtie2 filtering and " + str(count_after) + " read pairs after.")    
-    
+  log_file.close()
+  
+#function to run SPAdes  
 def 05b_spades(SRR_list):
   run_spades = "spades -k 55,77,99,127 -t 2 --only-assembler -s " + SRR_list[0] + "map.fastq -s " + SRR_list[1] + "map.fastq -s " + SRR_list[2] + "map.fastq -s " + SRR_list[3] + "map.fastq -o /spades/"
   os.system(run_spades)
-  log_file = open("miniProject.log", "w") #write to file
-  log_file.write(run_spades)
+  log_file = open("miniProject.log", "w")
+  log_file.write(run_spades) #write to file
   log_file.close()
   
 #function to conunt and subset contigs longer than 1000 bp  
