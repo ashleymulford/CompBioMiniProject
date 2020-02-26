@@ -29,7 +29,7 @@ Next, move into this directory:
      
     cd CompBioMiniProject/
     
-Run wrapper script from the CompBioMiniProject directory:
+### Run wrapper script from the CompBioMiniProject directory:
 - required arguments: --SRRlist
 
 To run with test data:
