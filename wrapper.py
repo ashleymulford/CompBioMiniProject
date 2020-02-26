@@ -26,7 +26,7 @@ def kallisto_index():
 #function to quantify paired-end reads with kallisto
 def kallisto_quant(SRR_list):
   for srr in SRR_list:
-    quantify = "kallisto quant -i hcmv_index.idx -o kallisto_results/" + srr + " -b 30 -t 4 test_data/" + srr + ".1.fastq test_data/" + srr + ".2.fastq"
+    quantify = "kallisto quant -i hcmv_index.idx -o kallisto_results/" + srr + " -b 30 -t 4 " + srr + ".1.fastq " + srr + ".2.fastq"
     os.system(quantify)
     
 #function to run sleuth
@@ -42,7 +42,7 @@ def bowtie2(SRR_list):
   run_bowtie2_build = "bowtie2-build EF999921_reads.fasta HCMV"
   os.system(run_bowtie2_build)
   for srr in SRR_list:
-    run_bowtie2 = "bowtie2 --no-unal --al-conc " + srr + " --quiet -x HCMV -1 test_data/"+ srr +".1.fastq -2 test_data/" + srr + ".2.fastq -S " + srr + "map.sam"
+    run_bowtie2 = "bowtie2 --no-unal --al-conc " + srr + " --quiet -x HCMV -1 "+ srr +".1.fastq -2 " + srr + ".2.fastq -S " + srr + "map.sam"
     os.system(run_bowtie2)
 
 #function to count reads before and after filtering with bowtie2
@@ -53,7 +53,7 @@ def count_reads(SRR_list):
     os.system(rename1) #rename bowtie2 output files to end in fastq
     rename2 = "mv " + srr + ".2 " + srr + ".02.fastq"
     os.system(rename2) #rename bowtie2 output files to end in fastq
-    fastq_before = open("test_data/" + srr + ".1.fastq")
+    fastq_before = open(srr + ".1.fastq")
     fastq_after = open(srr + ".01.fastq")
     count_before = 0
     count_after = 0
