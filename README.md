@@ -25,10 +25,12 @@ Clone this repository to your working directory:
 
     git clone https://github.com/ashleymulford/CompBioMiniProject
     
-Netx, move into this directory:
+Next, move into this directory:
      
     cd CompBioMiniProject/
     
 Run wrapper script from the CompBioMiniProject directory:
-
-    python3 wrapper.py 
+- required arguments: --SRRlist
+- To run with test data:
+    
+    python3 wrapper.py --SRRlist SRR5660030 SRR5660033 SRR5660044 SRR5660045
