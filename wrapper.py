@@ -26,7 +26,7 @@ def 02b_kallisto():
 #function to quantify paired-end reads with kallisto
 def 03a_kallisto(SRR_list):
   for srr in SRR_list:
-    quantify = "kallisto quant -i hcmv_index.idx -o quant_results_" + srr + " -b 30 -t 4 " + srr + ".1_1.fastq " + srr + ".1_2.fastq
+    quantify = "kallisto quant -i hcmv_index.idx -o quant_results_" + srr + " -b 30 -t 4 subset_" + srr + ".1_1.fastq subset_" + srr + ".1_2.fastq
     os.system(quantify)
   
 #function to run sleuth
