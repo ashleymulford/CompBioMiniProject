@@ -6,7 +6,7 @@ input_file = open("blast_input.fasta").read()
 log_file = open("project.log", "a")
 
 #blast
-result_handle = NCBIWWW.qblast("blastn", "nr", input_file, entrez_query = "herpes")
+result_handle = NCBIWWW.qblast("blastn", "nr", input_file, entrez_query = "Herpesviridae")
 #obtain record
 blast_record = NCBIXML.read(result_handle)
 #write column names to log
