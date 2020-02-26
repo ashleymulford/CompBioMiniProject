@@ -28,7 +28,11 @@ Clone this repository to your working directory:
 Netx, move into this directory:
      
     cd CompBioMiniProject/
-     
+    
+Next, make a directory called kallisto_results (some output will be stored here):
+
+    mkdir kallisto_results
+    
 Run wrapper script from the CompBioMiniProject directory:
 
     python3 wrapper.py 
