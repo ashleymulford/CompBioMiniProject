@@ -29,11 +29,27 @@ Next, move into this directory:
     cd CompBioMiniProject/
     
 ### Run wrapper script from the CompBioMiniProject directory:
-- required arguments: --SRRlist
+- required arguments: --SRRlist (a list of the SRR seqs you are inputting)
+- optional arguments: --pefastq (indicates input files are in paired-end fastq format)
 
 To run with test data:
     
-    python3 wrapper.py --SRRlist SRR5660030 SRR5660033 SRR5660044 SRR5660045
+    python3 wrapper.py --pefastq --SRRlist SRR5660030 SRR5660033 SRR5660044 SRR5660045
+
+To run with other data:
+- call script and adjust argument usage based on srr names and input format
+- To use data in .sra format, obtain files first and put in CompBioMiniProject directory
+
+Example for SRR5660030:
+
+    wget https://sra-download.st-va.ncbi.nlm.nih.gov/sos1/sra-pub-run-12/SRR5660030/SRR5660030.1
+
+Either download within CompBioMiniProject, or move file into this directory with:
+
+    mv SRR5660030.1 CompBioMiniProject/
+    
+Data in sra format can be downloaded from https://trace.ncbi.nlm.nih.gov/Traces/sra/
+All data will be assembled using the transcriptome for HCMV (NCBI accession EF999921) and BLAST results will be filtered by Herpesviridae.
 
 ## Important Output files/directories:
 - project.log: 
