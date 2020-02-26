@@ -104,10 +104,13 @@ def 09_blast():
 
   
 parser = argparse.ArgumentParser()
-parser.add_argument("--SRR-list", nargs='+', help = "a list of the SRRs you want to assemble and blast")
-parser.parse_args()
-  
-SRR_list = ["SRR5660030", "SRR5660033", "SRR5660044", "SRR5660045"]
+parser.add_argument("--SRRlist", nargs='+', help = "a list of the SRRs you want to assemble and blast")
+p = parser.parse_args()
+
+SRR_list = []
+
+for srr in p.SRRlist:
+  SRR_list.append(ssr)
 
 
 02a_EF99921_fasta()
