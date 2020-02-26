@@ -37,7 +37,7 @@ To run with test data:
     python3 wrapper.py --pefastq --SRRlist SRR5660030 SRR5660033 SRR5660044 SRR5660045
 
 To run with other data:
-- call script and adjust argument usage based on srr names and input format
+- Call the wrapper script and adjust argument usage based on srr names and input format
 - To use data in .sra format, obtain files first and put in CompBioMiniProject directory
 
 Example for SRR5660030:
