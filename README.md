@@ -11,8 +11,8 @@ This repo contains a python pipeline that takes sra input reads from the virus f
 
 - R https://cran.r-project.org/bin/windows/base/
 - with libraries:
-    - dplyr, download with: install.packages(dplyr)
-    - sleuth, download with: install.packages(sleuth)
+    - dplyr, download with: install.packages("dplyr")
+    - sleuth, download with: install.packages("sleuth")
 
 ## Software Requirements: 
 - fastq dump https://trace.ncbi.nlm.nih.gov/Traces/sra/sra.cgi?view=toolkit_doc&f=fastq-dump
