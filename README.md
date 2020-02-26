@@ -44,7 +44,7 @@ Example for SRR5660030:
 
     wget https://sra-download.st-va.ncbi.nlm.nih.gov/sos1/sra-pub-run-12/SRR5660030/SRR5660030.1
 
-Either download within CompBioMiniProject, or move file into this directory with:
+Either download within CompBioMiniProject or move file into this directory with:
 
     mv SRR5660030.1 CompBioMiniProject/
     
