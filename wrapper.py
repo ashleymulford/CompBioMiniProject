@@ -7,35 +7,35 @@ from Bio.Blast import NCBIWWW
 from Bio.Blast import NCBIXML
 
 #function to convert sra files to fastq paired-end reads
-def 01_fastq_dump(SRR_list):
+def fastq_dump(SRR_list):
   for srr in SRR_list:
     dump = "fastq-dump -I --split-files " + srr + ".1"
     os.system(dump)
 
 #function to make fasta file from CDS of NCBI Accession EF999921
-def 02a_EF99921_fasta():
-  make_fasta = "python3 02a_generate_input_HCMV.py" #see script for details on generation of fasta file
+def EF999921_fasta():
+  make_fasta = "python3 02a_generate_HCMV_input.py" #see script for details on generation of fasta file
   #this call runs command line:
   os.system(make_fasta)
 
 #function to make index with kallisto
-def 02b_kallisto():
+def kallisto_index():
   run_index = "kallisto index -i hcmv_index.idx HCMV_reads.fasta"
   os.system(run_index)
 
 #function to quantify paired-end reads with kallisto
-def 03a_kallisto(SRR_list):
+def kallisto_quant(SRR_list):
   for srr in SRR_list:
     quantify = "kallisto quant -i hcmv_index.idx -o quant_results_" + srr + " -b 30 -t 4 subset_" + srr + ".1_1.fastq subset_" + srr + ".1_2.fastq
     os.system(quantify)
   
 #function to run sleuth
-def 03b_sleuth():
+def sleuth():
   run_sleuth = "Rscript 03b_diff_gene_expression.R" #see script for details on running sleuth
   os.system(run_sleuth)
   
 #function to run bowtie2  
-def 04a_bowtie2(SRR_list):
+def bowtie2(SRR_list):
   #build bowtie2 index from EF999921 fasta file
   run_bowtie2_build = "bowtie2-build EF999921_reads.fasta HCMV""
   os.system(run_bowtie2_build)
@@ -44,7 +44,7 @@ def 04a_bowtie2(SRR_list):
     os.system(run_bowtie2)
 
 #function to convert sam files to fastq files for SPAdes input, also counts reads before and after filtering with bowtie2
-def 04b_count_reads(SRR_list):
+def count_reads(SRR_list):
   log_file = open("miniProject.log", "w")
   for srr in SRR_list:
     rename1 = "mv " + srr + ".1 " + srr + ".1.fastq"
@@ -72,7 +72,7 @@ def 04b_count_reads(SRR_list):
   log_file.close()
   
 #function to run SPAdes  
-def 05b_spades(SRR_list):
+def spades(SRR_list):
   run_spades = "spades -k 55,77,99,127 -t 2 --only-assembler --pe1-1 " + SRR_list[0] + ".1.fastq --pe1-2 " + SRR_list[0] + ".2.fastq --pe2-1 " + SRR_list[1] + ".1.fastq --pe2-2 " + SRR_list[1] + ".2.fastq --pe3-1 " + SRR_list[2] + ".1.fastq --pe3-2 " + SRR_list[2] + ".2.fastq --pe4-1 " + SRR_list[3] + ".1.fastq --pe4-2 " + SRR_list[3] + ".2.fastq -o /spades" 
   os.system(run_spades)
   log_file = open("miniProject.log", "w")
@@ -80,22 +80,22 @@ def 05b_spades(SRR_list):
   log_file.close()
   
 #function to conunt and subset contigs longer than 1000 bp  
-def 06_subset_contigs():
+def subset_contigs():
   subset = "python3 06_count_contigs.py" #see script for details
   os.system(subset)
   
 #function to calculate assembly length  
-def 07_assembly_length():
+def assembly_length():
   calc_length = "python3 07_assembly_length.py" #see script for details
   os.system(calc_length)
   
 #function to assemble contigs together, separated by 50 Ns  
-def 08_concatenate_contigs():
+def concatenate_contigs():
    concat = "python3 08_concat_contigs.py" #see script for details
    os.system(concat)
   
 #function to run blast  
-def 09_blast():
+def blast():
   blast = "python3 09_blast.py" #see script for details
   os.system(blast)
 
@@ -113,18 +113,18 @@ for srr in p.SRRlist:
   SRR_list.append(ssr)
 
 
-02a_EF99921_fasta()
-02b_kallisto()
-03a_kallisto(SRR_list)
-03b_sleuth()
-04a_bowtie2(SRR_list)
-04b_and_05a_convert_to_fastq_and_count(SRR_list)
+EF99921_fasta()
+kallisto_index()
+kallisto_quant(SRR_list)
+sleuth()
+bowtie2(SRR_list)
+count_reads(SRR_list)
 os.system(mkdir spades)
-05b_spades(SRR_list)
-06_subset_contigs()
-07_assembly_length()
-08_concatenate_contigs()
-09_blast()
+spades(SRR_list)
+subset_contigs()
+assembly_length()
+concatenate_contigs()
+blast()
 
 
 
