@@ -17,7 +17,6 @@ This repo contains a python pipeline that takes sra input reads from the virus f
 - fastq dump https://trace.ncbi.nlm.nih.gov/Traces/sra/sra.cgi?view=toolkit_doc&f=fastq-dump
 - kallisto https://pachterlab.github.io/kallisto/download
 - bowtie2 http://bowtie-bio.sourceforge.net/bowtie2/manual.shtml
-- samtools http://samtools.sourceforge.net/
 - SPAdes http://cab.spbu.ru/software/spades/
 
 ## How to run:
