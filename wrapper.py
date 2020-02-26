@@ -102,20 +102,19 @@ def blast():
   blast = "python3 09_blast.py" #see script for details
   os.system(blast)
 
-
-  ###############################################################
-
   
+  
+#Parse arguments  
 parser = argparse.ArgumentParser()
 parser.add_argument("--SRRlist", nargs='+', required=True, help = "a list of the SRRs you want to assemble and blast")
 p = parser.parse_args()
 
 SRR_list = []
-
+#get SRRs from argument
 for srr in p.SRRlist:
   SRR_list.append(srr)
 
-
+#Run functions
 EF999921_fasta()
 kallisto_index()
 kallisto_quant(SRR_list)
