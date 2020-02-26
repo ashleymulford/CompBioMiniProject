@@ -6,6 +6,7 @@ This repo contains a python pipeline that takes sra input reads from the virus f
 - Python3 https://www.python.org/downloads/
 - with libraries:
     - os https://docs.python.org/2/library/os.html
+    - argparse https://pypi.org/project/argparse/
     - Biopython https://biopython.org/wiki/Download
 
 - R https://cran.r-project.org/bin/windows/base/
@@ -48,7 +49,7 @@ Either download within CompBioMiniProject or move file into this directory with:
 
     mv SRR5660030.1 CompBioMiniProject/
     
-Data in sra format can be downloaded from https://trace.ncbi.nlm.nih.gov/Traces/sra/
+Data in sra format can be downloaded from https://trace.ncbi.nlm.nih.gov/Traces/sra/.
 All data will be assembled using the transcriptome for HCMV (NCBI accession EF999921) and BLAST results will be filtered by Herpesviridae.
 
 ## Important Output files/directories:
