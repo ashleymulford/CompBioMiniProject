@@ -7,8 +7,8 @@ for srr in SRR_list:
   #open files with full data set
   file1 = open("/home/amulford/mini_project/SRR_seq_data/" + srr + ".1_1.fastq")
   file2 = open("/home/amulford/mini_project/SRR_seq_data/" + srr + ".1_2.fastq")
-  test1 = open("/home/amulford/mini_project/SRR_seq_data/subset_" + srr + ".1_1.fastq", "w")
-  test2 = open("/home/amulford/mini_project/SRR_seq_data/subset_" + srr + ".1_2.fastq", "w")
+  test1 = open("/home/amulford/mini_project/SRR_seq_data/" + srr + ".1.fastq", "w")
+  test2 = open("/home/amulford/mini_project/SRR_seq_data/" + srr + ".2.fastq", "w")
   #put lines of file into list
   lines_list1 = []
   for line in file1:
