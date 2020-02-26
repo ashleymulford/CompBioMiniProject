@@ -31,6 +31,7 @@ Next, move into this directory:
     
 Run wrapper script from the CompBioMiniProject directory:
 - required arguments: --SRRlist
-- To run with test data:
+
+To run with test data:
     
     python3 wrapper.py --SRRlist SRR5660030 SRR5660033 SRR5660044 SRR5660045
