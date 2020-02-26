@@ -39,7 +39,7 @@ To run with test data:
 - project.log: 
     - contains all the output from the wrapper script, including counts of CDS, reads, and contigs and different points, signifcant results from Sleuth filtered by FDR<0.05, and 10 top hits from BLASTn
 - blast_input.fasta: 
-    - file contains assembled sequence, input for BLASTn
+    - contains assembled sequence, input for BLASTn
 - kallisto_results (dir): 
     - contains results from quantifying the TPM of each CDS in each transcriptome with kallisto
 - spades (dir): 
