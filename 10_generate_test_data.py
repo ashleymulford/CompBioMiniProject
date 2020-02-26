@@ -16,7 +16,7 @@ for srr in SRR_list:
   lines_list2 = []
   for line in file2:
     lines_list2.append(line)
-  #write out first 4000 lines of the full data set into subset files
+  #write out first 40000 lines of the full data set into subset files
   for line in lines_list1[0:40000]:
     test1.write(line)
   for line in lines_list2[0:40000]:
