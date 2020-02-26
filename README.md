@@ -34,3 +34,10 @@ Next, move into this directory:
 To run with test data:
     
     python3 wrapper.py --SRRlist SRR5660030 SRR5660033 SRR5660044 SRR5660045
+
+## Important Output files/directories:
+- project.log: contains all the output from the wrapper script, including counts of CDS, reads, and contigs and different points, signifcant results from Sleuth filtered by FDR<0.05, and 10 top hits from BLASTn
+- blast_input.fasta: file containing assembled sequence, input for BLASTn
+- kallisto_results: contains results from quantifying the TPM of each CDS in each transcriptome with kallisto
+- spades: contains all results from SPAdes; results file used in wrapper is contigs.fasta
+- additional intermediary files such as indices, .sam files and other .fasta files are generated but do not contain results.
