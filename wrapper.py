@@ -101,12 +101,11 @@ def concatenate_contigs():
 def blast():
   blast = "python3 09_blast.py" #see script for details
   os.system(blast)
-
-  
-  
+ 
 #Parse arguments  
 parser = argparse.ArgumentParser()
-parser.add_argument("--SRRlist", nargs='+', required=True, help = "a list of the SRRs you want to assemble and blast")
+parser.add_argument("--SRRlist", nargs="+", required=True, help = "a list of the SRRs you want to assemble and blast")
+parser.add_argument("--pefastq", action="store_true", help = "indicates that input data is in paired end fastq format")
 p = parser.parse_args()
 
 SRR_list = []
@@ -114,6 +113,10 @@ SRR_list = []
 for srr in p.SRRlist:
   SRR_list.append(srr)
 
+#Run fastq-dump if .sra files are inputed, this will convert to paired-end fastq 
+if not p.pefastq:
+  fastq_dump(SRR_list)  
+  
 #Run functions
 EF999921_fasta()
 kallisto_index()
@@ -125,7 +128,5 @@ spades(SRR_list)
 subset_contigs()
 assembly_length()
 concatenate_contigs()
-#blast()
-
-
+blast()
 
